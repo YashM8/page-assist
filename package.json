@@ -5,20 +5,22 @@
   "description": "Use your locally running AI models to assist you in your web browsing.",
   "author": "n4ze3m",
   "scripts": {
-    "dev": "cross-env TARGET=chrome wxt",
-    "dev:firefox": "cross-env TARGET=firefox wxt -b firefox",
-    "dev:edge": "cross-env TARGET=chrome wxt -b edge",
-    "build": "bun build:chrome; bun build:firefox; bun build:edge",
-    "build:chrome": "cross-env TARGET=chrome wxt build",
-    "build:firefox": "cross-env TARGET=firefox wxt build -b firefox",
-    "build:edge": "cross-env TARGET=chrome wxt build -b edge",
-    "zip": "cross-env TARGET=chrome wxt zip",
-    "zip:firefox": "cross-env TARGET=firefox wxt zip -b firefox",
-    "compile": "tsc --noEmit",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "postinstall": "wxt prepare"
+    "dev":           "cross-env TARGET=chrome wxt",
+    "dev:firefox":   "cross-env TARGET=firefox wxt -b firefox",
+    "dev:edge":      "cross-env TARGET=chrome  wxt -b edge",
+
+    "build":         "bun run build:chrome && bun run build:web",
+
+    "build:chrome":  "cross-env TARGET=chrome wxt build",
+    "build:web":     "cross-env TARGET=web    wxt build --out-dir build/web",
+
+    "zip":           "cross-env TARGET=chrome wxt zip",
+    "compile":       "tsc --noEmit",
+
+    "docs:dev":      "vitepress dev docs",
+    "docs:build":    "vitepress build docs",
+
+    "postinstall":   "wxt prepare"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.18.4",
